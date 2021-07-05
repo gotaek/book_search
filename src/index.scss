@@ -1,0 +1,23 @@
+ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-content: center;
+  height: 100vh;
+
+  li {
+    color: red;
+    list-style: none;
+    padding: 20px;
+    justify-items: start;
+    align-items: end;
+    &:nth-child(even) {
+      background-color: aquamarine;
+    }
+    &:nth-child(odd) {
+      background-color: beige;
+    }
+  }
+}
