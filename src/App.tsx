@@ -1,12 +1,20 @@
 import React from 'react';
-import searchFetch from './API/searchFetch';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import SearchBar from './components/SearchBar';
+import HomePage from './pages/HomePage';
+import SearchPage from './pages/SearchPage';
 const App = () => {
-  const data = searchFetch("미움");
-  data.then(e => {
-    console.log(e)
-  })
-  return (<div>hello world</div> )
-    
-}
+  return (
+    <>
+      <SearchBar />
+      <Router>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/search" component={SearchPage} />
+        </Switch>
+      </Router>
+    </>
+  );
+};
 
 export default App;
