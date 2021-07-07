@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import qs from 'qs';
 
-const SearchPage:React.FC<{}>=()=>{
-    return(             
-        <h2>search</h2>
-    )
-}
+const SearchPage = ({ location }: any) => {
+  console.log(location.search);
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  console.log(query.q);
+
+  return <h2>search</h2>;
+};
 
 export default SearchPage;

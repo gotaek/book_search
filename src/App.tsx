@@ -6,8 +6,8 @@ import SearchPage from './pages/SearchPage';
 const App = () => {
   return (
     <>
-      <SearchBar />
       <Router>
+        <SearchBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/search" component={SearchPage} />
