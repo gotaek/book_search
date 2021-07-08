@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-const SearchBar: React.FC<{}> = () => {
+const SearchBar = () => {
   const [value, setValue] = useState('');
-  const changeEventHandler = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
-  const clickEventHandler = () => {};
   return (
     <div>
-      <input type="text" value={value} onChange={changeEventHandler} />
-      <button onClick={clickEventHandler}>
+      <input type="text" value={value} onChange={handleChange} />
+      <button>
         <Link to={`/search?q=${value}`}>button</Link>
       </button>
     </div>
