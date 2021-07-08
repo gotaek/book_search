@@ -21,7 +21,7 @@ const SearchPage = ({ location }: any) => {
           {
             params: { query: `${search_word}` },
             headers: {
-              Authorization: `KakaoAK ${tokenStr}`,
+              Authorization: `KakaoAK ${process.env.REACT_APP_BOOK_API_KEY}`,
             },
           },
         );
