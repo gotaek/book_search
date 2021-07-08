@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
-import axios from 'axios';
 import ListItem from '../components/ListItem';
-import { fetchData } from '../API/fetchData';
+import { axiosGetData } from '../API/axiosGetData';
+
 interface ILocation {
   location: { pathname: string; search: string; hash: string; state: string };
 }
@@ -36,21 +36,10 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          'https://dapi.kakao.com/v3/search/book?target=title',
-          {
-            params: {
-              query: `${search_word}`,
-              size: 50,
-              page: 1,
-            },
-            headers: {
-              Authorization: `KakaoAK ${process.env.REACT_APP_BOOK_API_KEY}`,
-            },
-          },
-        );
-        console.log(response);
-        setData(response.data.documents);
+        const response = axiosGetData(search_word);
+        response.then((res) => {
+          setData(res.data.documents);
+        });
       } catch (e) {
         console.log(e);
       }
@@ -75,9 +64,11 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
           readOnly
         ></textarea>
       )}
-      {data.map((d) => (
-        <ListItem data={d} />
-      ))}
+      {data.length === 0 ? (
+        <div>검색결과 없음</div>
+      ) : (
+        data.map((d) => <ListItem data={d} />)
+      )}
 
       <div>itme</div>
     </div>
