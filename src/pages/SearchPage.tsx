@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  ReactElement,
+  ReactComponentElement,
+} from 'react';
 import qs from 'qs';
 import ListItem from '../components/ListItem';
 import { axiosGetData } from '../API/axiosGetData';
-
+import ErrorPage from '../pages/ErrorPage';
 interface ILocation {
   location: { pathname: string; search: string; hash: string; state: string };
 }
@@ -25,12 +31,22 @@ export interface IState {
 const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
   const [data, setData] = useState<IState['data'][] | null>(null);
   const [loading, setLoading] = useState(false);
+  const [comps, setComps] = useState<ReactElement<IState['data']> | never[]>(
+    [],
+  );
   const query: any = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
+  const page = useRef(1);
 
   const search_word: string = query.q;
-
+  const clickHandle = () => {
+    const response = axiosGetData(search_word, page.current);
+    response.then((res) => {
+      page.current += 1;
+      setData(res.data.documents);
+    });
+  };
   useEffect(() => {
     setData(null);
     const fetchData = async () => {
@@ -65,12 +81,12 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
         ></textarea>
       )}
       {data.length === 0 ? (
-        <div>검색결과 없음</div>
+        <ErrorPage />
       ) : (
-        data.map((d) => <ListItem data={d} />)
+        data.map((d) => setComps(<ListItem data={d} />))
       )}
 
-      <div>itme</div>
+      <button onClick={clickHandle}>더 보기</button>
     </div>
   );
 };

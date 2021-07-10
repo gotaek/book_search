@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchBar from './components/SearchBar';
+import SearchBarHeader from './components/SearchBarHeader';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 const App = () => {
   return (
     <>
       <Router>
-        <SearchBar />
+        <SearchBarHeader />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/search" component={SearchPage} />
