@@ -22,6 +22,7 @@ export interface IState {
     url: string;
   };
   className: string;
+  key: string;
 }
 const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
   const [data, setData] = useState<IState['data'][] | null>(null);
@@ -65,18 +66,12 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
 
   return (
     <div className="grid">
-      {data && (
-        <textarea
-          rows={50}
-          cols={200}
-          value={JSON.stringify(data, null, 2)}
-          readOnly
-        ></textarea>
-      )}
       {data.length === 0 ? (
         <ErrorPage />
       ) : (
-        data.map((d) => <BookListItem className={'bookList'} data={d} />)
+        data.map((d) => (
+          <BookListItem key={d.isbn} className={'bookList'} data={d} />
+        ))
       )}
       <button onClick={clickHandle}>더 보기</button>
     </div>
