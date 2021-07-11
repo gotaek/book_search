@@ -1,7 +1,7 @@
 import React from 'react';
 import { IState as IProps } from '../pages/SearchPage';
 
-const ListItem: React.FC<IProps> = ({ data }: IProps) => {
+const BookListItem: React.FC<IProps> = ({ data }: IProps) => {
   if (!data.thumbnail) {
     return null;
   }
@@ -16,4 +16,4 @@ const ListItem: React.FC<IProps> = ({ data }: IProps) => {
   );
 };
 
-export default ListItem;
+export default BookListItem;

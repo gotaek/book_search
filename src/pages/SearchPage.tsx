@@ -1,12 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  ReactElement,
-  ReactComponentElement,
-} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import qs from 'qs';
-import ListItem from '../components/ListItem';
+import BookListItem from '../components/BookListItem';
 import { axiosGetData } from '../API/axiosGetData';
 import ErrorPage from '../pages/ErrorPage';
 interface ILocation {
@@ -27,13 +21,12 @@ export interface IState {
     translators: string[];
     url: string;
   };
+  className: string;
 }
 const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
   const [data, setData] = useState<IState['data'][] | null>(null);
   const [loading, setLoading] = useState(false);
-  const [comps, setComps] = useState<ReactElement<IState['data']> | never[]>(
-    [],
-  );
+
   const query: any = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
@@ -71,7 +64,7 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
   }
 
   return (
-    <div className="list">
+    <div className="grid">
       {data && (
         <textarea
           rows={50}
@@ -83,9 +76,8 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
       {data.length === 0 ? (
         <ErrorPage />
       ) : (
-        data.map((d) => setComps(<ListItem data={d} />))
+        data.map((d) => <BookListItem className={'bookList'} data={d} />)
       )}
-
       <button onClick={clickHandle}>더 보기</button>
     </div>
   );
