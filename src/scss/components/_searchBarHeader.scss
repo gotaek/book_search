@@ -1,8 +1,44 @@
+@import '../utils/variables';
+
 header {
   display: flex;
+  position: fixed;
+  top: 0;
   box-sizing: border-box;
   justify-content: space-between;
   width: 100%;
-  background-color: antiquewhite;
-  padding: 10px 20px;
+  height: 70px;
+  background-color: $headerBg;
+  padding: $padding $padding;
+  .title {
+    display: flex;
+    height: 100%;
+    font-weight: bolder;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: $bg;
+    .bookIcon {
+      margin-right: 5px;
+    }
+  }
+  .searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid $bg;
+    input {
+      font-size: medium;
+      border: none;
+      padding: none;
+      background-color: inherit;
+      outline-style: none;
+      margin-right: 5px;
+      color: $bg;
+    }
+    .searchIcon {
+      color: $bg;
+      font-size: large;
+    }
+  }
 }

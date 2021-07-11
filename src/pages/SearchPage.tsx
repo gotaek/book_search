@@ -21,7 +21,6 @@ export interface IState {
     translators: string[];
     url: string;
   };
-  className: string;
   key: string;
 }
 const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
@@ -65,16 +64,22 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
   }
 
   return (
-    <div className="grid">
-      {data.length === 0 ? (
-        <ErrorPage />
-      ) : (
-        data.map((d) => (
-          <BookListItem key={d.isbn} className={'bookList'} data={d} />
-        ))
-      )}
-      <button onClick={clickHandle}>더 보기</button>
-    </div>
+    <>
+      <div>
+        {data.length === 0 ? (
+          <ErrorPage />
+        ) : (
+          <div>
+            <ul className="grid">
+              {data.map((d) => {
+                return <BookListItem key={d.isbn} data={d} />;
+              })}
+            </ul>
+            <button onClick={clickHandle}>더 보기</button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

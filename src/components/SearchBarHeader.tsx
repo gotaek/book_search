@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { useHistory } from 'react-router';
-
+import { RiBookOpenFill } from 'react-icons/ri';
 const SearchBar = () => {
   const [value, setValue] = useState('');
   const history = useHistory();
@@ -18,7 +18,12 @@ const SearchBar = () => {
 
   return (
     <header>
-      <h1>Search Book</h1>
+      <Link style={{ textDecoration: 'none' }} to={'/'}>
+        <div className="title">
+          <RiBookOpenFill className={'bookIcon'} />
+          <h1>Search Book</h1>
+        </div>
+      </Link>
       <div className="searchBar">
         <input
           type="text"
@@ -26,11 +31,8 @@ const SearchBar = () => {
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <Link
-          style={{ textDecoration: 'none', color: 'white' }}
-          to={`/search?q=${value}`}
-        >
-          <BsSearch />
+        <Link style={{ textDecoration: 'none' }} to={`/search?q=${value}`}>
+          <BsSearch className={'searchIcon'} />
         </Link>
       </div>
     </header>
