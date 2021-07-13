@@ -1,0 +1,7 @@
+@mixin oddEvenBg($isOdd) {
+  @if $isOdd {
+    background-color: #dfcdaa;
+  } @else {
+    background-color: #b1ad83;
+  }
+}

@@ -65,20 +65,22 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
 
   return (
     <>
-      <div>
-        {data.length === 0 ? (
-          <ErrorPage />
-        ) : (
-          <div>
-            <ul className="grid">
-              {data.map((d) => {
-                return <BookListItem key={d.isbn} data={d} />;
-              })}
-            </ul>
-            <button onClick={clickHandle}>더 보기</button>
-          </div>
-        )}
-      </div>
+      {data.length === 0 ? (
+        <ErrorPage />
+      ) : (
+        <div>
+          <ul className="grid">
+            {data.map((d) => {
+              return parseInt(d.isbn) % 2 === 0 ? (
+                <BookListItem key={d.isbn} data={d} />
+              ) : (
+                <BookListItem key={d.isbn} data={d} />
+              );
+            })}
+          </ul>
+          <button onClick={clickHandle}>더 보기</button>
+        </div>
+      )}
     </>
   );
 };

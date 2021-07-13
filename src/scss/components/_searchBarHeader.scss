@@ -3,6 +3,7 @@
 header {
   display: flex;
   position: fixed;
+  z-index: 100;
   top: 0;
   box-sizing: border-box;
   justify-content: space-between;

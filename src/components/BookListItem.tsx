@@ -3,18 +3,17 @@ import { IState as IProps } from '../pages/SearchPage';
 
 const BookListItem: React.FC<IProps> = ({ data }: IProps) => {
   const [description, setDescription] = useState<Boolean>(false);
-
-  const authorsReducer = (acc: string, curVal: string): string => {
-    return acc + ', ' + curVal;
-  };
-  const contentsReducer = (acc: string, curVal: string): string => {
-    return acc + '. ' + curVal;
-  };
-
-  const authors = data.authors.reduce(authorsReducer);
+  const authors =
+    data.authors.length === 1
+      ? data.authors
+      : `${data.authors[0]} 외 ${data.authors.length} 명`;
   const date = data.datetime.split('T')[0];
+  const content =
+    data.contents.charAt(data.contents.length - 1) !== '.'
+      ? `${data.contents}...`
+      : data.contents;
 
-  if (!data.thumbnail) {
+  if (!data.thumbnail || !data.contents) {
     return null;
   }
 
@@ -29,12 +28,14 @@ const BookListItem: React.FC<IProps> = ({ data }: IProps) => {
         onMouseLeave={mouseEnterLeaveHandle}
       >
         <div className="card__header">{authors}</div>
+        <div className="card__center">
+          {!description ? (
+            <img src={`${data.thumbnail}`} alt={data.title} />
+          ) : (
+            <dd>{content}</dd>
+          )}
+        </div>
 
-        {!description ? (
-          <img src={`${data.thumbnail}`} alt={data.title} />
-        ) : (
-          <dd>{data.contents}</dd>
-        )}
         <dt>{data.title}</dt>
       </section>
 

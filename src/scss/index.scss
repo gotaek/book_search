@@ -1,5 +1,5 @@
 @import './default';
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap');
 /* components */
 @import './components/bookListItem';
 @import './components/searchBarHeader';
@@ -17,4 +17,6 @@
 
 body {
   background-color: $bg;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-weight: 800;
 }
