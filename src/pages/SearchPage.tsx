@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import BookListItem from '../components/BookListItem';
 import { axiosGetData } from '../API/axiosGetData';
 import ErrorPage from '../pages/ErrorPage';
-interface ILocation {
-  location: { pathname: string; search: string; hash: string; state: string };
-}
+import { RouteComponentProps } from 'react-router-dom';
 export interface IState {
   data: {
     authors: string[];
@@ -23,25 +21,20 @@ export interface IState {
   };
   key: string;
 }
-const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
-  const [data, setData] = useState<IState['data'][] | null>(null);
+const SearchPage: React.FC<RouteComponentProps> = ({
+  location,
+}: RouteComponentProps) => {
+  const [data, setData] = useState<IState['data'][]>([]);
   const [loading, setLoading] = useState(false);
-
+  const [page, setPage] = useState(2);
   const query: any = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-  const page = useRef(1);
-
   const search_word: string = query.q;
-  const clickHandle = () => {
-    const response = axiosGetData(search_word, page.current);
-    response.then((res) => {
-      page.current += 1;
-      setData(res.data.documents);
-    });
-  };
+
   useEffect(() => {
-    setData(null);
+    setData([]);
+    setPage(2);
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -56,6 +49,19 @@ const SearchPage: React.FC<ILocation> = ({ location }: ILocation) => {
     };
     fetchData();
   }, [search_word]);
+
+  const clickHandle = () => {
+    setPage(page + 1);
+    const response = axiosGetData(search_word, page);
+    response.then((res) => {
+      if (res.data.meta.is_end === false) {
+        const newData = [...data, ...res.data.documents];
+        console.log(newData);
+        setData(newData);
+      }
+    });
+  };
+
   if (loading) {
     return <div> loading </div>;
   }
