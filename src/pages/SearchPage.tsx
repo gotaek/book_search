@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import BookListItem from '../components/BookListItem';
 import { axiosGetData } from '../API/axiosGetData';
-import ErrorPage from '../pages/ErrorPage';
+import NonePage from './NonePage';
 import { RouteComponentProps } from 'react-router-dom';
+
 export interface IState {
   data: {
     authors: string[];
@@ -20,6 +21,7 @@ export interface IState {
     url: string;
   };
   key: string;
+  ref: any;
 }
 const SearchPage: React.FC<RouteComponentProps> = ({
   location,
@@ -27,12 +29,15 @@ const SearchPage: React.FC<RouteComponentProps> = ({
   const [data, setData] = useState<IState['data'][]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(2);
+  const [target, setTarget] = useState(null);
+
   const query: any = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
   const search_word: string = query.q;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setData([]);
     setPage(2);
     const fetchData = async () => {
@@ -50,7 +55,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
     fetchData();
   }, [search_word]);
 
-  const clickHandle = () => {
+  const fetchMoreData = () => {
     setPage(page + 1);
     const response = axiosGetData(search_word, page);
     response.then((res) => {
@@ -62,6 +67,29 @@ const SearchPage: React.FC<RouteComponentProps> = ({
     });
   };
 
+  const onIntersect: IntersectionObserverCallback = async (
+    [entry],
+    observer: IntersectionObserver,
+  ) => {
+    if (entry.isIntersecting) {
+      observer.unobserve(entry.target);
+      await fetchMoreData();
+      observer.observe(entry.target);
+    }
+  };
+
+  useEffect(() => {
+    let observer: IntersectionObserver;
+    if (target) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 0.5,
+        root: document.querySelector('body'),
+      });
+      observer.observe(target);
+    }
+    return () => observer && observer.disconnect();
+  }, [target]);
+
   if (loading) {
     return <div> loading </div>;
   }
@@ -72,19 +100,29 @@ const SearchPage: React.FC<RouteComponentProps> = ({
   return (
     <>
       {data.length === 0 ? (
-        <ErrorPage />
+        <NonePage />
       ) : (
         <div>
           <ul className="grid">
-            {data.map((d) => {
+            {data.map((d, index) => {
+              const lastEl = index === data.length - 1;
+              console.log(lastEl);
               return parseInt(d.isbn) % 2 === 0 ? (
-                <BookListItem key={d.isbn} data={d} />
+                <BookListItem
+                  key={d.isbn + index}
+                  data={d}
+                  ref={lastEl ? setTarget : null}
+                />
               ) : (
-                <BookListItem key={d.isbn} data={d} />
+                <BookListItem
+                  key={d.isbn + index}
+                  data={d}
+                  ref={lastEl ? setTarget : null}
+                />
               );
             })}
           </ul>
-          <button onClick={clickHandle}>더 보기</button>
+          <button onClick={fetchMoreData}>더 보기</button>
         </div>
       )}
     </>
