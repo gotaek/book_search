@@ -45,6 +45,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
     window.scrollTo(0, 0);
     setData([]);
     setPage(2);
+    setPageEnd(false);
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -87,8 +88,6 @@ const SearchPage: React.FC<RouteComponentProps> = ({
       observer.unobserve(entry.target);
       if (pageEnd === false) {
         await fetchMoreData();
-      } else {
-        observer.disconnect();
       }
       setLoading(false);
       observer.observe(entry.target);
