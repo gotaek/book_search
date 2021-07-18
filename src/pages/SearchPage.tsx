@@ -128,7 +128,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
               );
             })}
           </ul>
-          <div ref={setTarget} />
+          {!pageEnd && <div ref={setTarget} />}
         </div>
       )}
     </>

@@ -2,11 +2,16 @@
 @import '../utils/mixins';
 @import '../utils/extends';
 .card {
+  height: 100%;
+
   @extend %card;
   &:nth-child(odd) {
     @include oddEvenBg(true);
   }
   &:nth-child(even) {
     @include oddEvenBg(false);
+  }
+  .card__bottom {
+    color: black;
   }
 }
