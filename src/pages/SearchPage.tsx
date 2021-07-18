@@ -42,7 +42,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
 
   /* 다른 쿼리 스트링이 들어오면 새롭게 데이터를 fetch */
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setData([]);
     setPage(2);
     setPageEnd(false);
