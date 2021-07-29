@@ -1,3 +1,4 @@
+/* Search Page */
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import BookListItem from '../components/BookListItem';

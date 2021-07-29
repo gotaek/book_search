@@ -1,3 +1,4 @@
+/* BookListItem component */
 import React, { useState } from 'react';
 import { IState as IProps } from '../pages/SearchPage';
 

@@ -1,3 +1,4 @@
+/* None page */
 import React from 'react';
 
 const NonePage = () => {

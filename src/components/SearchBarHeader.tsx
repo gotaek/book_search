@@ -1,8 +1,10 @@
+/* searchBarHeader component */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { useHistory } from 'react-router';
 import { RiBookOpenFill } from 'react-icons/ri';
+
 const SearchBar = () => {
   const [value, setValue] = useState('');
   const history = useHistory();
