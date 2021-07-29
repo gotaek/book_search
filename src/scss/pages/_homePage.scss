@@ -1,0 +1,30 @@
+.container {
+  background-image: url('https://source.unsplash.com/random');
+  height: 80vh;
+  width: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  transition: transform display 0.2s ease-in-out;
+  h2 {
+    position: relative;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.box {
+  width: 800px;
+  background-size: cover;
+  overflow: hidden;
+  img {
+    transition: all 0.2s ease-in-out;
+    filter: grayscale(100%);
+    &:hover {
+      transform: scale(1.2);
+
+      filter: none;
+    }
+  }
+}

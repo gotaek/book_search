@@ -8,12 +8,11 @@ const App = () => {
     <>
       <Router>
         <SearchBarHeader />
-        <div className="contents">
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/search" component={SearchPage} />
-          </Switch>
-        </div>
+
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/search" component={SearchPage} />
+        </Switch>
       </Router>
     </>
   );

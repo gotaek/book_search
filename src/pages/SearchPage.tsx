@@ -114,7 +114,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
   }
 
   return (
-    <>
+    <div className="contents">
       {data.length === 0 ? (
         <NonePage />
       ) : (
@@ -131,7 +131,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
           {!pageEnd && <div ref={setTarget} />}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

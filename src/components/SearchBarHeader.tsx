@@ -6,7 +6,6 @@ import { RiBookOpenFill } from 'react-icons/ri';
 const SearchBar = () => {
   const [value, setValue] = useState('');
   const history = useHistory();
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
@@ -24,17 +23,35 @@ const SearchBar = () => {
           <h1>Search Book</h1>
         </div>
       </Link>
-      <div className="searchBar">
-        <input
-          type="text"
-          value={value}
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-        />
-        <Link style={{ textDecoration: 'none' }} to={`/search?q=${value}`}>
-          <BsSearch className={'searchIcon'} />
-        </Link>
-      </div>
+      <section>
+        <ul className="dropdown__container">
+          <li className="dropdown__elem">
+            <div className="dropdown__btn">Menu</div>
+            <ul className="dropdown-list">
+              <li>
+                <a href="#">Projects</a>
+              </li>
+              <li>
+                <a href="#">Category</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div className="searchBar">
+          <input
+            type="text"
+            value={value}
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+          />
+          <Link style={{ textDecoration: 'none' }} to={`/search?q=${value}`}>
+            <BsSearch className={'searchIcon'} />
+          </Link>
+        </div>
+      </section>
     </header>
   );
 };

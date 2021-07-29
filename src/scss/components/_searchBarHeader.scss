@@ -11,6 +11,7 @@ header {
   height: 70px;
   background-color: $headerBg;
   padding: $padding $padding;
+  color: $bg;
   .title {
     display: flex;
     height: 100%;
@@ -18,28 +19,67 @@ header {
     font-size: 20px;
     justify-content: center;
     align-items: center;
-    color: $bg;
+    min-width: max-content;
     .bookIcon {
       margin-right: 5px;
     }
   }
-  .searchBar {
+  section {
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-bottom: 3px solid $bg;
-    input {
-      font-size: medium;
-      border: none;
-      padding: none;
-      background-color: inherit;
-      outline-style: none;
-      margin-right: 5px;
-      color: $bg;
+    .dropdown__container {
+      position: relative;
+      cursor: pointer;
+      margin-right: 20px;
+      .dropdown__elem {
+        .dropdown__btn {
+          padding: 10px;
+        }
+        &:hover .dropdown-list {
+          max-height: 280px;
+        }
+      }
+      .dropdown-list {
+        position: absolute;
+        min-width: max-content;
+        background-color: black;
+        max-height: 0;
+        overflow: hidden;
+        border-radius: 2px;
+        transition: all 1s ease-in-out;
+        font-size: small;
+        li {
+          padding: 10px;
+          transition: background-color 0.2s ease-in-out;
+          &:hover {
+            background-color: gray;
+          }
+        }
+      }
     }
-    .searchIcon {
-      color: $bg;
-      font-size: large;
+    .searchBar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 3px solid $bg;
+      input {
+        font-size: medium;
+        border: none;
+        padding: none;
+        background-color: inherit;
+        outline-style: none;
+        margin-right: 5px;
+        color: $bg;
+      }
+      .searchIcon {
+        font-size: large;
+      }
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown__btn {
+    display: none;
   }
 }

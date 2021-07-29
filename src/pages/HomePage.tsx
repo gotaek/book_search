@@ -1,19 +1,15 @@
 import React from 'react';
-import { Spring, animated } from 'react-spring';
+
 const HomePage = () => {
   return (
-    <Spring
-      loop
-      from={{ opacity: 0, color: 'red' }}
-      to={[
-        { opacity: 1, color: '#ffaaee' },
-        { opacity: 0, color: 'rgb(14,26,19)' },
-      ]}
-    >
-      {(styles) => (
-        <animated.div style={styles}>I will fade in and out</animated.div>
-      )}
-    </Spring>
+    <>
+      <section className="container">
+        <h2>parallax</h2>
+      </section>
+      <div className="box">
+        <img src="https://source.unsplash.com/1600x900/?book" alt="img" />
+      </div>
+    </>
   );
 };
 export default HomePage;
