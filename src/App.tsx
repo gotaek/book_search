@@ -8,7 +8,6 @@ const App = () => {
     <>
       <Router>
         <SearchBarHeader />
-
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/search" component={SearchPage} />
