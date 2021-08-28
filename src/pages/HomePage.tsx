@@ -1,6 +1,7 @@
 /* Home Page */
 import React, { useState, useEffect } from 'react';
 import ParallaxBox from '../components/ParallaxBox';
+import SwiperBox from '../components/SwiperBox';
 
 const HomePage = () => {
   const [position, setPosition] = useState(0);
@@ -16,9 +17,7 @@ const HomePage = () => {
   return (
     <>
       <ParallaxBox position={position} />
-      <div className="box">
-        <img src="https://source.unsplash.com/1600x900/?book" alt="img" />
-      </div>
+      <SwiperBox />
     </>
   );
 };

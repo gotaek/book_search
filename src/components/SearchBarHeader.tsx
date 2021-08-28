@@ -31,13 +31,13 @@ const SearchBar = () => {
             <div className="dropdown__btn">Menu</div>
             <ul className="dropdown-list">
               <li>
-                <a href="#">Projects</a>
+                <Link to="#">Projects</Link>
               </li>
               <li>
-                <a href="#">Category</a>
+                <Link to="#">Category</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link to="#">Contact</Link>
               </li>
             </ul>
           </li>

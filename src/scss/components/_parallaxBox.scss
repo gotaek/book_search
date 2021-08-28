@@ -1,0 +1,15 @@
+.parallax__container {
+  background-image: url('https://source.unsplash.com/1600x900');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+  h2 {
+    position: relative;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
