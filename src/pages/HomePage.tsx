@@ -1,7 +1,7 @@
 /* Home Page */
 import React, { useState, useEffect } from 'react';
 import ParallaxBox from '../components/ParallaxBox';
-import SwiperBox from '../components/SwiperBox';
+import CarouselBox from '../components/CarouselBox';
 
 const HomePage = () => {
   const [position, setPosition] = useState(0);
@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <>
       <ParallaxBox position={position} />
-      <SwiperBox />
+      <CarouselBox />
     </>
   );
 };

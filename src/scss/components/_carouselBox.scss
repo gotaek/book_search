@@ -1,0 +1,28 @@
+.carousel__container {
+  margin: 3em 2em;
+  .slick-list {
+    overflow: hidden;
+    text-align: center;
+
+    margin: 0 -10px; //margin 만들기
+    .slick-slide {
+      margin: 0 10px; //margin 만들기
+      li {
+        overflow: hidden;
+        img {
+          transition: all 0.2s ease-in-out;
+          filter: grayscale(100%);
+          //채우기
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          //확장
+          &:hover {
+            transform: scale(1.2);
+            filter: none;
+          }
+        }
+      }
+    }
+  }
+}
