@@ -1,9 +1,9 @@
 @mixin oddEvenBg($isOdd) {
   @if $isOdd {
-    background-color: #815854;
-    color: #f9ebde;
+    background-color: #02343f;
+    color: #f0edcc;
   } @else {
-    background-color: #f9ebde;
-    color: #815854;
+    background-color: #f0edcc;
+    color: #02343f;
   }
 }

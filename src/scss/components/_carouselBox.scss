@@ -3,7 +3,6 @@
   .slick-list {
     overflow: hidden;
     text-align: center;
-
     margin: 0 -10px; //margin 만들기
     .slick-slide {
       margin: 0 10px; //margin 만들기
@@ -24,5 +23,15 @@
         }
       }
     }
+  }
+}
+@media screen and (max-width: 1070px) {
+  .carousel__container {
+    margin: 2em 1em;
+  }
+}
+@media screen and (max-width: 680px) {
+  .carousel__container {
+    margin: 1em 0.8em;
   }
 }
