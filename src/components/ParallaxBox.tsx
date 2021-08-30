@@ -1,9 +1,7 @@
 /* parallaxBox component */
 import React from 'react';
+import { IProps } from '../pages/HomePage';
 
-interface IProps {
-  position: number;
-}
 const ParallaxBox = ({ position }: IProps) => {
   return (
     <>

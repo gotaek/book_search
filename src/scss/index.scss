@@ -1,15 +1,16 @@
 @import './default';
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Oswald:wght@300&display=swap');
 /* components */
 @import './components/bookListItem';
 @import './components/searchBarHeader';
 @import './components/grid';
 @import './components/carouselBox';
 @import './components/parallaxBox';
+@import './components/attachmentBox';
+@import './components/textBox';
 
 /* pages */
 @import './pages/nonePage';
-@import './pages/homePage';
 @import './pages/contents';
 
 /* utils */
@@ -19,6 +20,6 @@
 
 body {
   background-color: $bg;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Gowun Dodum', sans-serif;
   font-weight: 800;
 }

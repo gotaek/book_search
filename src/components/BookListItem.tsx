@@ -42,7 +42,7 @@ const BookListItem: React.FC<IProps> = ({ data }: IProps) => {
 
       <section className="card__bottom">
         <span className="card__date">{date}</span>
-        <span className="card__authors">\{data.price}</span>
+        <span className="card__authors">₩{data.price}</span>
       </section>
     </div>
   );
