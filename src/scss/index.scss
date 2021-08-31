@@ -1,5 +1,6 @@
 @import './default';
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Oswald:wght@300&display=swap');
+
 /* components */
 @import './components/bookListItem';
 @import './components/searchBarHeader';
@@ -20,6 +21,5 @@
 
 body {
   background-color: $bg;
-  font-family: 'Gowun Dodum', sans-serif;
-  font-weight: 800;
+  font-family: 'Oswald', 'Gowun Dodum', sans-serif;
 }

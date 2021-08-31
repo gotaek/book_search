@@ -35,7 +35,7 @@ const SearchPage: React.FC<RouteComponentProps> = ({
   const [target, setTarget] = useState(null); //infinite scroll을 위한 ref
   const [pageEnd, setPageEnd] = useState(false); //마지막 페이지인지 아닌지를 확인
 
-  /*쿼리 파싱*/
+  /*query parsing*/
   const query: any = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });

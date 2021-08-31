@@ -4,6 +4,7 @@ import { IState as IProps } from '../pages/SearchPage';
 
 const BookListItem: React.FC<IProps> = ({ data }: IProps) => {
   const [description, setDescription] = useState<Boolean>(false);
+  //데이터 파싱 & 저장
   const authors =
     data.authors.length === 1
       ? data.authors

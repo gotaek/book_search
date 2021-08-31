@@ -31,7 +31,7 @@ const CarouselBox = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
     className: 'center',
-
+    //responsive web styling
     responsive: [
       {
         breakpoint: 1070,

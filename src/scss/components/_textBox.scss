@@ -1,15 +1,7 @@
 .text__container {
   width: 80vw;
   margin: 3em auto;
-  left: 0;
-  font-family: 'Oswald', sans-serif;
-  h1 {
-    font-size: 3em;
-    margin: 0.5em 0;
-  }
-  span {
-    font-size: 2em;
-    font-weight: 100;
-    line-height: 200%;
-  }
+  line-height: 200%;
+  font-weight: 100;
+  font-size: 2rem;
 }
