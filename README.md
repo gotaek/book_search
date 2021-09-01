@@ -1,4 +1,4 @@
-# Search Book
+# Book Search
 
 This is a website for searching book information.
 
