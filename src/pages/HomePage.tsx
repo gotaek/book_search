@@ -9,6 +9,7 @@ export interface IProps {
   position?: number;
   children?: React.ReactNode;
 }
+
 const HomePage = () => {
   const [position, setPosition] = useState(0);
   const handleScroll = () => {
@@ -27,7 +28,7 @@ const HomePage = () => {
     <>
       <ParallaxBox position={position} />
       <TextBox position={position}>
-        <h1>Search Book</h1>
+        <h1>Book Search</h1>
         <span>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

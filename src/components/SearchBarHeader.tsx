@@ -22,7 +22,7 @@ const SearchBar = () => {
       <Link style={{ textDecoration: 'none' }} to={'/'}>
         <div className="title">
           <RiBookOpenFill className={'bookIcon'} />
-          <h1>Search Book</h1>
+          <h1>Book Search </h1>
         </div>
       </Link>
       <section>

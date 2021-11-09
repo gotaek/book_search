@@ -9,7 +9,7 @@ const ParallaxBox = ({ position }: IProps) => {
         className="parallax__container"
         style={{ backgroundPositionY: position / 2 }}
       >
-        <h2>Search Book</h2>
+        <h2>Book Search</h2>
       </section>
     </>
   );
